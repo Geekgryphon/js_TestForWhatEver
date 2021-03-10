@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+</body>
+<script>
+ function showLength(array){
+    if(array.length > 5){
+        var greater = 'Greater than 5';
+        console.log("greater");
+    }else{
+        var lessThan = 'less than 5';
+        console.log(lessThan);
+    }
+ }
+
+ showLength([1,2,3]);
+
+ //************************
+
+ var funcs = [];
+
+ for(let i=0; i<5 ;i++){
+     funcs.push(function() {console.log(i)});
+ }
+
+ funcs[0]();
+ funcs[1]();
+ funcs[4]();
+
+ //******************************
+
+ let foo = "hello";
+
+ console.log(foo);
+ {
+     let foo = 'world';
+     console.log(foo);
+     var foo = 'somestring';
+ }
+
+  //******************************
+
+  function box(height = 50, color='green' , url = 'google.com'){
+      console.log('height',height,'color',color,'url',url);
+  }
+
+  box(60,'blue','fullstackstudent');
+
+  //******************************
+
+  function multiply(num = 2, numTwo = num) {
+      return num * numTwo;
+  }
+
+  console.log(multiply(3,9));
+
+ //******************************
+
+ function sum(arg1, arg2, ...numbers){
+     var result = 0;
+
+     numbers.forEach(function(number){
+        result += number;
+     });
+
+     return result;
+ }
+
+ console.log(sum('arg','arg',3,5,7,9))
+
+  //******************************
+
+  let numbers = [1,2,3];
+
+  function sum(num1, num2, num3){
+      return num1 + num2 + num3;
+  }
+
+  console.log(sum.apply(null, numbers));
+
+  let a = [2, 3, 4];
+  let b = [1, ...a, 5];
+  console.log(b);
+
+  //******************************
+
+  let foo = (a, b)=>{
+    let counter = 0;
+
+    for(let i = 0; i<b ;i++){
+        counter += a;
+    }
+
+    return counter;
+  };
+
+  console.log(foo(1,5));
+
+//******************************
+
+var person = {
+    firstname: 'Abdi',
+    lastname: 'Cagarweyne',
+    getfullName: function (){
+        var name = () => console.log(this.firstname + ''+ this.lastname);
+        return name();
+    }
+}
+
+person.getFullName();
+
+//******************************************
+//php回傳陣列
+function createUser (firstname, lastname){
+    let fullName = firstname + ' ' + lastname;
+    return {
+        firstname,
+        lastname,
+        fullName,
+    }
+}
+
+let user = createUser('Abdi','Cagarweyne');
+
+console.log(user.firstname, user.lastname, user.fullName);
+
+//******************************************
+
+let obj = {
+    x: 7,
+    y: 8,
+    z: 9
+}
+
+let {x, y, z} = obj;
+console.log(x, y, z);
+
+//******************************************
+
+//功能轉物件
+
+let myObj = {
+    prop1: 'Hello',
+    prop2: 'world',
+    fullName: function(firstname, lastname){
+ // fullName(firstname,lastname)
+        let fullName = firstname + ' ' + lastname;
+        return fullName;
+    }
+}
+
+console.log(myobj.fullName('Abdi','Cagarweyne'));
+
+//******************************************
+
+console.log('string text line 1\n string text line 2');
+
+//******************************************
+
+let item = {
+    id: 1,
+    content: 'Learn ES6',
+    completed: false,
+}
+
+let newItem = {...item,completed: true};
+console.log('Item', item);
+console.log(newItem);
+
+//******************************************
+
+let fruits = ['banana','apples','grapes'];
+let [a,,c] = fruits;
+console.log(a,c);
+
+//******************************************
+
+let fruits = ['banana','apples','grapes'];
+
+for(let fruit of fruits){
+    console.log(fruit);
+}
+
+//******************************************
+
+let services = [
+    {name: 'nails', activated: false},
+    {name: 'haircut', activated: true},
+    {name: 'feet therapy', activated: true}
+];
+
+let activated = services.find(service => service.activated);
+
+//******************************************
+
+let carOne = {
+    make:  'Audi'
+}
+
+let carTwo = {
+    make: 'Ford'
+}
+
+let carAge = new Map();
+carAge.set(carOne,3);
+carAge.set(carTwo,5);
+
+console.log(carAge);
+
+//******************************************
+
+let cars = new Map();
+
+cars.set("CarOne","Audi");
+cars.set("CarTwo","Ford");
+cars.set("CarThree","GM");
+cars.set("CarFour","BMW");
+
+for(let [key, value] of cars){
+    console.log(`${key} = ${value}`);
+}
+
+//******************************************
+
+let person = {
+    name: "Abdi",
+    address: "123 JS stree Node Avenu",
+    occupation: "JS Developer"
+}
+
+let numbers = [1,2,3];
+//console.log(typeof numbers[Symbol.iterator]);
+
+console.log(typeof person[Symbol.iterator]);
+
+//******************************************
+
+let personOne = {};
+let personTwo = {};
+
+let people = new WeakMap();
+
+people.set(personOne, "David");
+people.set(personTwo, "Abdi");
+
+console.log(people.get(personOne));
+console.log(people.get(personTwo));
+
+//******************************************
+
+let cars = new Set();
+
+cars.add('Audi');
+cars.add('Ford');
+cars.add('Mercedes');
+cars.add('Audi');
+
+console.log('total number of cars', cars.size);
+
+//******************************************
+
+let cars = new Set();
+
+cars.add('Audi');
+cars.add('Ford');
+cars.add('Mercedes');
+cars.add('Audi');
+
+let [a,b, c] = cars;
+console.log(a, b, c);
+
+//******************************************
+
+let weakCars = new WeakSet();
+
+weakCars.add({driver: 'Abdi'});
+let passenger = {passenger: 'Sarah'};
+
+weakCars.add(passenger);
+weakCars.delete(passenger);
+
+console.log(weakCars.has(passenger));
+
+//******************************************
+
+let carSlides = [
+    {car: 'Audi', seen: false, image: 'url'},
+    {car: 'Ford', seen: false, image: 'url'},
+    {car: 'Mercedes', seen: false, image: 'url'},
+    {car: 'VW', seen: false, image: 'url'},
+];
+
+let carsViewed = new WeakSet();
+
+function clicked(carSlides){
+    carSlides.forEach(car => { carsViewed.add(car);
+    })
+}
+
+let linkClicked = true;
+if(linkClicked){
+    clicked(carSlides);
+}
+
+for(let car of carSlides){
+    console.log(carsViewed.has(car));
+}
+
+console.log(carSlides);
+
+//******************************************
+
+function Car(carSpec) {
+    this.name = carSpec.name;
+    this.model = carSpec.model;
+    this.description = carSpec.description;
+}
+
+Car.prototype.drive = function() {
+    console.log('Driving...');
+};
+
+function Audi(carSpec){
+    Car.call(this, carSpec);
+    this.engine = carSpec.engine;
+    this.audiDrive = function(){
+        console.log('Audi Driving...');
+    }
+}
+
+Audi.prototype = Object.create(Car.prototype);
+Audi.prototype.constructor = Audi;
+const myAudi = new Audi ({
+    name: 'My Audi',
+    model: 'Audi',
+    description: 'Great German car',
+    engine: 'A313'
+});
+
+console.log(myAudi.description);
+
+//******************************************
+
+class Car {
+    constructor (carSpec){
+        this.name = carSpec.name;
+        this.model = carSpec.model;
+        this.description = carSpec.description;
+    }
+
+    drive(){
+        console.log('Driving...');
+    }
+}
+
+class Audi extends Car {
+    constructor(carSpec){
+        super(carSpec);
+        this.engine = carSpec.engine;
+    }
+}
+
+let audi = new Audi({name: 'Audi',engine: 'A313', description:'Best A'});
+console.log(audi);
+
+// let car = new Car({name: 'Ford',model : 'Galaxy',description: 'Family Car'});
+
+// console.log(car.drive());
+
+//******************************************
+
+//js 遞迴
+
+//******************************************
+
+let Promise = {
+    then(){},
+    catch(){},
+    all(){},
+}
+
+//******************************************
+
+function waitingFor(name){
+    console.log(`Waiting for ${name}`);
+
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=> {
+            if(name === 'Mike'){
+                reject(Error('Mike is always late!!!'));
+            }else{
+                resolve(name);
+            }
+        },2000);
+    })
+}
+
+function waitForFriend(name){
+    return function(){
+        return waitingFor(name);
+    }
+}
+
+function leave(){
+    console.log('Great we have everyone!');
+}
+
+waitingFor('Abdi').then(waitForFriend('Thomas'))
+          .then(waitForFriend('Michelle'))
+          .then(waitForFriend('John'))
+          .then(leave);
+
+// waitFor('Abdi').then((name)=>{
+//     console.log(`Great we got ${name}`);
+// });
+
+//******************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
